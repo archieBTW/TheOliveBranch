@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- Prevent Caching -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="the_olive_branch">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <title>the_olive_branch</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <div id="loading">
+    <style>
+      body {
+        background-color: #FAFAFA;
+        /* Matches app theme */
+      }
+
+      #loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #000000;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+
+      .loader {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #E0E0E0;
+        border-top: 5px solid #5D4037;
+        /* App primary color */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <div class="loader"></div>
+  </div>
+  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    // Remove splash screen when Flutter is initialized
+    window.addEventListener('load', function (ev) {
+      // Optional: Logic to remove loader if flutter_bootstrap handles it slightly differently
+      // But usually Flutter replaces the body or overlays. 
+      // Ideally we want to listen to a Flutter event, but typically Flutter clears the body content or we can hide it.
+      // Actually, standard practice is that Flutter app mounting replaces content or we hide it.
+      // For now, let's let Flutter take over. If Flutter mounts into body, it might wipe this, which is fine.
+    });
+  </script>
+</body>
+
+</html>
