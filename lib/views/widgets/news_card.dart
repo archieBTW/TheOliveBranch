@@ -86,22 +86,27 @@ class NewsCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: _getSourceColor(item.source, context),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          child: Text(
-                            item.source,
-                            style: GoogleFonts.lato(
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
+                         Flexible(
+                           child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: _getSourceColor(item.source, context),
+                              borderRadius: BorderRadius.circular(16),
                             ),
-                          ),
-                        ),
+                            child: Text(
+                              item.source,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.lato(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                                                   ),
+                         ),
+                        const SizedBox(width: 8),
                         Row(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
                               item.formattedDate,
@@ -196,7 +201,7 @@ class NewsCard extends StatelessWidget {
   String _getEffectiveImageUrl(String url) {
     if (kIsWeb) {
       // Always proxy images on web to bypass hotlink protection
-      return 'https://api.codetabs.com/v1/proxy?quest=${Uri.encodeComponent(url)}';
+      return '/proxy/?url=$url';
     }
     return url;
   }

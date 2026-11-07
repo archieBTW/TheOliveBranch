@@ -14,7 +14,7 @@ class MetadataService {
     try {
       final uri = Uri.parse(url);
       final effectiveUrl = kIsWeb 
-          ? Uri.parse('https://api.codetabs.com/v1/proxy?quest=${Uri.encodeComponent(url)}') 
+          ? Uri.parse('/proxy/?url=$url') 
           : uri;
 
       final response = await http.get(
